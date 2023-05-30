@@ -7,6 +7,9 @@ on:
 jobs:
   deploy-microsite-and-storybook:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
 
     env:
       CI: true
